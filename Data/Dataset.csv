@@ -1,0 +1,166 @@
+Reference,Date_Station_Type,Date,Station,Other,Type,Category,Season,d15N,d13C,Weight,mgN,mgC,RunNo
+1,01/08/2016_Station_1_filter_1,1/8/2016,Station 1,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,3.4,-23.5,10.1,0.006,0.04,170912DF
+3,01/08/2016_Station_2_filter_1,1/8/2016,Station 2,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,3.1,-23.8,10.1,0.006,0.042,170912DF
+5,01/08/2016_Station_3_filter_1,1/8/2016,Station 3,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,2.8,-23.9,9.6,0.005,0.037,170912DF
+7,23/08/2016_Station_1_filter_1,23/08/2016,Station 1,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,3.4,-23.2,10.8,0.006,0.044,170912DF
+9,23/08/2016_Station_2_filter_1,23/08/2016,Station 2,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,5.5,-23.9,10.6,0.009,0.054,170912DF
+11,23/08/2016_Station_3_filter_1,23/08/2016,Station 3,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,5.6,-23.5,11.2,0.008,0.047,170912DF
+13,09/09/2016_Station_1_filter_1,9/9/2016,Station 1,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,1.9,-23.8,10.3,0.005,0.042,170912DF
+15,09/09/2016_Station_2_filter_1,9/9/2016,Station 2,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,4.4,-23.9,12.4,0.008,0.056,170912DF
+17,09/09/2016_Station_3_filter_1,9/9/2016,Station 3,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,2.8,-23.4,10.4,0.005,0.035,170912DF
+19,4/10/2016_Station_1_filter_1,4/10/2016,Station 1,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,1.4,-23.3,11,0.005,0.032,170912DF
+21,4/10/2016_Station_2_filter_1,4/10/2016,Station 2,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,,-23.4,10.4,0.005,0.029,170912DF
+23,4/10/2016_Station_3_filter_1,4/10/2016,Station 3,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,1.6,-23.6,8.8,0.006,0.037,170912DF
+25,30/11/2016_Station_1_filter_1,30/11/2016,Station 1,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,1.8,-22.5,9.9,0.006,0.037,170912DG
+27,30/11/2016_Station_2_filter_1,30/11/2016,Station 2,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,2.8,-22.4,9.8,0.006,0.036,170912DG
+29,30/11/2016_Station_3_filter_1,30/11/2016,Station 3,filter 1,pico-nanoplankton,pico-nanoplankton,autumn,,-22.7,9,0.01,0.058,170912DG
+31,15/02/2017_Station_1_filter_1,15/02/2017,Station 1,filter 1,pico-nanoplankton,pico-nanoplankton,spring,,-23.8,10.1,0.006,0.041,170912DG
+33,15/02/2017_Station_2_filter_1,15/02/2017,Station 2,filter 1,pico-nanoplankton,pico-nanoplankton,spring,1.7,-24,10.7,0.007,0.05,170912DG
+35,15/02/2017_Station_3_filter_1,15/02/2017,Station 3,filter 1,pico-nanoplankton,pico-nanoplankton,spring,,-24,12,0.007,0.053,170912DG
+37,10/03/2017_Station_1_filter_1,10/3/2017,Station 1,filter 1,pico-nanoplankton,pico-nanoplankton,spring,4,-22.8,12,0.009,0.066,170912DG
+39,10/03/2017_Station_2_filter_1,10/3/2017,Station 2,filter 1,pico-nanoplankton,pico-nanoplankton,spring,7.6,-23.2,10.7,0.007,0.051,170912DG
+41,10/03/2017_Station_3_filter_1,10/3/2017,Station 3,filter 1,pico-nanoplankton,pico-nanoplankton,spring,6.4,-23.5,9.2,0.005,0.039,170912DG
+43,12/04/2017_Station_1_filter_1,12/4/2017,Station 1,filter 1,pico-nanoplankton,pico-nanoplankton,spring,4.4,-23.7,11,0.007,0.049,170912DG
+45,12/04/2017_Station_2_filter_1,12/4/2017,Station 2,filter 1,pico-nanoplankton,pico-nanoplankton,spring,5,-23.3,8,0.006,0.041,170912DG
+47,12/04/2017_Station_3_filter_1,12/4/2017,Station 3,filter 1,pico-nanoplankton,pico-nanoplankton,spring,4.9,-24.4,10.1,0.008,0.057,170912DG
+49,10/05/2017_Station_1_filter_1,10/5/2017,Station 1,filter 1,pico-nanoplankton,pico-nanoplankton,spring,7.5,-24.3,10.4,0.005,0.046,170912DG
+51,10/05/2017_Station_2_filter_1,10/5/2017,Station 2,filter 1,pico-nanoplankton,pico-nanoplankton,spring,7.7,-24.4,12.9,0.004,0.033,170912DG
+53,10/05/2017_Station_3_filter_1,10/5/2017,Station 3,filter 1,pico-nanoplankton,pico-nanoplankton,spring,8.2,-24.7,12.5,0.005,0.043,170912DG
+2,01/08/2016_Station_1_microplancton,1/8/2016,Station 1,microplancton,microplankton,microplankton,autumn,7.2,-24,7.8,0.006,0.054,170912DF
+4,01/08/2016_Station_2_microplancton,1/8/2016,Station 2,microplancton,microplankton,microplankton,autumn,6.2,-24.1,8.7,0.01,0.087,170912DF
+6,01/08/2016_Station_3_microplancton,1/8/2016,Station 3,microplancton,microplankton,microplankton,autumn,7,-23.9,8.7,0.008,0.064,170912DF
+8,23/08/2016_Station_1_microplancton,23/08/2016,Station 1,microplancton,microplankton,microplankton,autumn,7.4,-24,7.9,0.006,0.047,170912DF
+10,23/08/2016_Station_2_microplancton,23/08/2016,Station 2,microplancton,microplankton,microplankton,autumn,8.6,-25,9.3,0.003,0.03,170912DF
+12,23/08/2016_Station_3_microplancton,23/08/2016,Station 3,microplancton,microplankton,microplankton,autumn,8.8,-23.9,8,0.008,0.055,170912DF
+14,09/09/2016_Station_1_microplancton,9/9/2016,Station 1,microplancton,microplankton,microplankton,autumn,7.1,-24.5,11.4,0.009,0.121,170912DF
+16,09/09/2016_Station_2_microplancton,9/9/2016,Station 2,microplancton,microplankton,microplankton,autumn,6.4,-23.8,10.6,0.01,0.089,170912DF
+18,09/09/2016_Station_3_microplancton,9/9/2016,Station 3,microplancton,microplankton,microplankton,autumn,6.9,-24.3,10.1,0.01,0.1,170912DF
+20,4/10/2016_Station_1_microplancton,4/10/2016,Station 1,microplancton,microplankton,microplankton,autumn,4.1,-24.7,9.1,0.005,0.049,170912DF
+22,4/10/2016_Station_2_microplancton,4/10/2016,Station 2,microplancton,microplankton,microplankton,autumn,,-23.9,10.1,0.004,0.036,170912DF
+24,4/10/2016_Station_3_microplancton,4/10/2016,Station 3,microplancton,microplankton,microplankton,autumn,2.6,-24.8,9.2,0.004,0.038,170912DF
+26,30/11/2016_Station_1_microplancton,30/11/2016,Station 1,microplancton,microplankton,microplankton,autumn,5.1,-23.3,8.7,0.007,0.074,170912DG
+28,30/11/2016_Station_2_microplancton,30/11/2016,Station 2,microplancton,microplankton,microplankton,autumn,5.4,-23.5,10.7,0.01,0.092,170912DG
+30,30/11/2016_Station_3_microplancton,30/11/2016,Station 3,microplancton,microplankton,microplankton,autumn,5.5,-23.9,12.8,0.009,0.073,170912DG
+32,15/02/2017_Station_1_microplancton,15/02/2017,Station 1,microplancton,microplankton,microplankton,spring,6.5,-24.1,10.6,0.009,0.118,170912DG
+34,15/02/2017_Station_2_microplancton,15/02/2017,Station 2,microplancton,microplankton,microplankton,spring,6.7,-24.2,9.5,0.007,0.063,170912DG
+36,15/02/2017_Station_3_microplancton,15/02/2017,Station 3,microplancton,microplankton,microplankton,spring,5.8,-24.6,9.7,0.006,0.071,170912DG
+38,10/03/2017_Station_1_microplancton,10/3/2017,Station 1,microplancton,microplankton,microplankton,spring,5,-22.1,11.3,0.018,0.104,170912DG
+40,10/03/2017_Station_2_microplancton,10/3/2017,Station 2,microplancton,microplankton,microplankton,spring,6.9,-23.7,10.6,0.015,0.106,170912DG
+42,10/03/2017_Station_3_microplancton,10/3/2017,Station 3,microplancton,microplankton,microplankton,spring,8.2,-24.2,9.7,0.003,0.032,170912DG
+44,12/04/2017_Station_1_microplancton,12/4/2017,Station 1,microplancton,microplankton,microplankton,spring,12.7,-24.3,9,0.005,0.042,170912DG
+46,12/04/2017_Station_2_microplancton,12/4/2017,Station 2,microplancton,microplankton,microplankton,spring,9.8,-24.1,11.6,0.005,0.046,170912DG
+48,12/04/2017_Station_3_microplancton,12/4/2017,Station 3,microplancton,microplankton,microplankton,spring,8.5,-24.5,11,0.008,0.084,170912DG
+50,10/05/2017_Station_1_microplancton,10/5/2017,Station 1,microplancton,microplankton,microplankton,spring,9,-24.7,11.7,0.005,0.057,170912DG
+52,10/05/2017_Station_2_microplancton,10/5/2017,Station 2,microplancton,microplankton,microplankton,spring,9.3,-24.9,11.3,0.003,0.041,170912DG
+54,10/05/2017_Station_3_microplancton,10/5/2017,Station 3,microplancton,microplankton,microplankton,spring,12.7,-25.6,13.3,0.003,0.034,170912DG
+55,01/08/2016_station_1_65-50m,1/8/2016,station 1,65-50m,mesozooplankton,mesoplankton,autumn,3.5,-21.9,1.3,0.059,0.244,170912DA
+56,01/08/2016_station_2_65-50m,1/8/2016,station 2,65-50m,mesozooplankton,mesoplankton,autumn,3.5,-22.1,1.3,0.097,0.378,170912DA
+57,01/08/2016_station_3_65-50m,1/8/2016,station 3,65-50m,mesozooplankton,mesoplankton,autumn,3.4,-21.4,1.4,0.078,0.303,170912DA
+58,01/08/2016_station_1_vertical,1/8/2016,station 1,vertical,mesozooplankton,mesoplankton,autumn,3.8,-20.9,1.3,0.071,0.287,170912DA
+59,01/08/2016_station_2_vertical,1/8/2016,station 2,vertical,mesozooplankton,mesoplankton,autumn,3,-20.8,1.3,0.06,0.235,170912DA
+59,01/08/2016_station_2_vertical,1/8/2016,station 2,vertical,mesozooplankton,mesoplankton,autumn,3.1,-21,1.4,0.059,0.229,170912DA
+60,01/08/2016_station_3_vertical,1/8/2016,station 3,vertical,mesozooplankton,mesoplankton,autumn,3.3,-22.2,1.3,0.093,0.372,170912DA
+61,09/09/2016_station_1_65-50m,9/9/2016,station 1,65-50m,mesozooplankton,mesoplankton,autumn,3.4,-22.8,1.3,0.098,0.411,170912DA
+61,09/09/2016_station_1_65-50m,9/9/2016,station 1,65-50m,mesozooplankton,mesoplankton,autumn,3.2,-22.9,1.3,0.101,0.43,170912DA
+62,09/09/2016_station_2_65-50m,9/9/2016,station 2,65-50m,mesozooplankton,mesoplankton,autumn,4.1,-22.2,1.3,0.091,0.385,170912DA
+63,09/09/2016_station_3_65-50m,9/9/2016,station 3,65-50m,mesozooplankton,mesoplankton,autumn,2.9,-22.3,1.3,0.111,0.467,170912DA
+64,09/09/2016_station_1_vertical,9/9/2016,station 1,vertical,mesozooplankton,mesoplankton,autumn,3,-21.8,1.3,0.11,0.448,170912DA
+65,09/09/2016_station_2_vertical,9/9/2016,station 2,vertical,mesozooplankton,mesoplankton,autumn,3.2,-22.1,1.4,0.112,0.456,170912DA
+66,09/09/2016_station_3_vertical,9/9/2016,station 3,vertical,mesozooplankton,mesoplankton,autumn,2.7,-22,1.4,0.12,0.493,170912DA
+66,09/09/2016_station_3_vertical,9/9/2016,station 3,vertical,mesozooplankton,mesoplankton,autumn,2.7,-22.2,1.3,0.115,0.475,170912DA
+67,04/10/2016_station_1_65-50m,4/10/2016,station 1,65-50m,mesozooplankton,mesoplankton,autumn,3.8,-21.8,1.3,0.117,0.462,170912DA
+68,04/10/2016_station_2_65-50m,4/10/2016,station 2,65-50m,mesozooplankton,mesoplankton,autumn,4,-21.6,1.3,0.099,0.396,170912DA
+69,04/10/2016_station_3_65-50m,4/10/2016,station 3,65-50m,mesozooplankton,mesoplankton,autumn,4,-21.8,1.3,0.117,0.487,170912DA
+70,04/10/2016_station_1_vertical,4/10/2016,station 1,vertical,mesozooplankton,mesoplankton,autumn,2.8,-21.7,1.4,0.126,0.5,170912DA
+70,04/10/2016_station_1_vertical,4/10/2016,station 1,vertical,mesozooplankton,mesoplankton,autumn,2.8,-22,1.3,0.121,0.479,170912DA
+71,04/10/2016_station_2_vertical,4/10/2016,station 2,vertical,mesozooplankton,mesoplankton,autumn,2.6,-22,1.3,0.119,0.456,170912DA
+72,04/10/2016_station_3_vertical,4/10/2016,station 3,vertical,mesozooplankton,mesoplankton,autumn,2.5,-22,1.3,0.113,0.451,170912DA
+73,30/11/2016_station_1_65-50m,30/11/2016,station 1,65-50m,mesozooplankton,mesoplankton,autumn,4.3,-20.4,1.3,0.086,0.367,170912DA
+74,30/11/2016_station_2_65-50m,30/11/2016,station 2,65-50m,mesozooplankton,mesoplankton,autumn,4.3,-20.2,1.4,0.096,0.413,170912DA
+75,30/11/2016_station_3_65-50m,30/11/2016,station 3,65-50m,mesozooplankton,mesoplankton,autumn,4.4,-20.1,1.3,0.1,0.429,170912DB
+75,30/11/2016_station_3_65-50m,30/11/2016,station 3,65-50m,mesozooplankton,mesoplankton,autumn,4.4,-20.3,1.3,0.1,0.437,170912DB
+76,30/11/2016_station_1_vertical,30/11/2016,station 1,vertical,mesozooplankton,mesoplankton,autumn,4.6,-20.2,1.3,0.107,0.456,170912DB
+77,30/11/2016_station_2_vertical,30/11/2016,station 2,vertical,mesozooplankton,mesoplankton,autumn,4.7,-20,1.3,0.102,0.429,170912DB
+78,30/11/2016_station_3_vertical,30/11/2016,station 3,vertical,mesozooplankton,mesoplankton,autumn,4.8,-20,1.4,0.104,0.434,170912DB
+79,15/02/2017_station_1_65-50m,15/02/2017,station 1,65-50m,mesozooplankton,mesoplankton,spring,3.3,-22.6,1.3,0.095,0.428,170912DB
+80,15/02/2017_station_2_65-50m,15/02/2017,station 2,65-50m,mesozooplankton,mesoplankton,spring,3.1,-22.1,1.3,0.095,0.394,170912DB
+80,15/02/2017_station_2_65-50m,15/02/2017,station 2,65-50m,mesozooplankton,mesoplankton,spring,3.2,-22,1.3,0.096,0.384,170912DB
+81,15/02/2017_station_3_65-50m,15/02/2017,station 3,65-50m,mesozooplankton,mesoplankton,spring,2.9,-22.2,1.4,0.127,0.495,170912DB
+82,15/02/2017_station_1_vertical,15/02/2017,station 1,vertical,mesozooplankton,mesoplankton,spring,2.9,-22.5,1.4,0.12,0.487,170912DB
+83,15/02/2017_station_2_vertical,15/02/2017,station 2,vertical,mesozooplankton,mesoplankton,spring,6.6,-21.3,1.3,0.086,0.297,170912DB
+84,15/02/2017_station_3_vertical,15/02/2017,station 3,vertical,mesozooplankton,mesoplankton,spring,3,-22.3,1.3,0.107,0.42,170912DB
+85,10/03/2017_station_1_65-50m,10/3/2017,station 1,65-50m,mesozooplankton,mesoplankton,spring,4.2,-22.2,1.3,0.119,0.498,170912DB
+85,10/03/2017_station_1_65-50m,10/3/2017,station 1,65-50m,mesozooplankton,mesoplankton,spring,4.3,-22,1.3,0.12,0.496,170912DB
+86,10/03/2017_station_2_65-50m,10/3/2017,station 2,65-50m,mesozooplankton,mesoplankton,spring,4.3,-21.7,1.3,0.113,0.445,170912DB
+87,10/03/2017_station_3_65-50m,10/3/2017,station 3,65-50m,mesozooplankton,mesoplankton,spring,4.1,-21.8,1.3,0.125,0.492,170912DB
+88,10/03/2017_station_1_vertical,10/3/2017,station 1,vertical,mesozooplankton,mesoplankton,spring,4.1,-21.9,1.3,0.128,0.511,170912DB
+89,10/03/2017_station_2_vertical,10/3/2017,station 2,vertical,mesozooplankton,mesoplankton,spring,4,-21.7,1.3,0.116,0.464,170912DB
+90,10/03/2017_station_3_vertical,10/3/2017,station 3,vertical,mesozooplankton,mesoplankton,spring,3.9,-21.6,1.3,0.12,0.474,170912DB
+90,10/03/2017_station_3_vertical,10/3/2017,station 3,vertical,mesozooplankton,mesoplankton,spring,4,-21.6,1.3,0.123,0.484,170912DB
+91,12/04/2017_station_1_65-50m,12/4/2017,station 1,65-50m,mesozooplankton,mesoplankton,spring,5.3,-22.5,1.3,0.115,0.47,170912DB
+92,12/04/2017_station_2_65-50m,12/4/2017,station 2,65-50m,mesozooplankton,mesoplankton,spring,5.5,-22.4,1.3,0.11,0.449,170912DB
+93,12/04/2017_station_3_65-50m,12/4/2017,station 3,65-50m,mesozooplankton,mesoplankton,spring,5.5,-22.2,1.4,0.126,0.509,170912DB
+94,12/04/2017_station_1_vertical,12/4/2017,station 1,vertical,mesozooplankton,mesoplankton,spring,5.2,-22.7,1.3,0.128,0.496,170912DB
+95,12/04/2017_station_2_vertical,12/4/2017,station 2,vertical,mesozooplankton,mesoplankton,spring,5.1,-22.8,1.3,0.132,0.508,170912DB
+96,12/04/2017_station_3_vertical,12/4/2017,station 3,vertical,mesozooplankton,mesoplankton,spring,5.1,-22.8,1.3,0.132,0.513,170912DB
+97,10/05/2017_station_1_65-50m,10/5/2017,station 1,65-50m,mesozooplankton,mesoplankton,spring,5.9,-22,1.3,0.049,0.225,170912DB
+98,10/05/2017_station_2_vertical,10/5/2017,station 2,vertical,mesozooplankton,mesoplankton,spring,5.1,-22.5,1.3,0.121,0.488,170912DB
+98,10/05/2017_station_2_vertical,10/5/2017,station 2,vertical,mesozooplankton,mesoplankton,spring,5,-22.5,1.3,0.119,0.478,170912DB
+99,10/05/2017_station_3_65-50m,10/5/2017,station 3,65-50m,mesozooplankton,mesoplankton,spring,6.2,-22.2,1.4,0.074,0.318,170912DB
+100,30/11/2016_A._subpinnata_1,30/11/2016,A. subpinnata 1,,coral,A_subpinnata,autumn,5.4,-20.6,1.4,0.136,0.448,170912DC
+101,30/11/2016_A._subpinnata_2,30/11/2016,A. subpinnata 2,,coral,A_subpinnata,autumn,6.1,-21.3,1.4,0.115,0.467,170912DC
+101,30/11/2016_A._subpinnata_2,30/11/2016,A. subpinnata 2,,coral,A_subpinnata,autumn,5.9,-21.1,1.4,0.131,0.491,170912DC
+102,30/11/2016_A._subpinnata_3,30/11/2016,A. subpinnata 3,,coral,A_subpinnata,autumn,6.1,-21.7,1.4,0.103,0.43,170912DC
+103,30/11/2016_A._subpinnata_4,30/11/2016,A. subpinnata 4,,coral,A_subpinnata,autumn,6.5,-21.4,1.4,0.099,0.443,170912DC
+104,30/11/2016_A._subpinnata_5,30/11/2016,A. subpinnata 5,,coral,A_subpinnata,autumn,5.9,-21.7,1.5,0.115,0.507,170912DC
+105,30/11/2016_A._subpinnata_6,30/11/2016,A. subpinnata 6,,coral,A_subpinnata,autumn,5.8,-21.1,1.5,0.11,0.449,170912DC
+106,30/11/2016_A._subpinnata_7,30/11/2016,A. subpinnata 7,,coral,A_subpinnata,autumn,6.4,-21.3,1.4,0.109,0.482,170912DC
+106,30/11/2016_A._subpinnata_7,30/11/2016,A. subpinnata 7,,coral,A_subpinnata,autumn,6.2,-21.3,1.4,0.112,0.48,170912DC
+107,30/11/2016_A._subpinnata_8,30/11/2016,A. subpinnata 8,,coral,A_subpinnata,autumn,5.7,-21.8,1.4,0.114,0.484,170912DC
+108,30/11/2016_A._subpinnata_9,30/11/2016,A. subpinnata 9,,coral,A_subpinnata,autumn,6.1,-21.8,1.4,0.105,0.485,170912DC
+109,30/11/2016_A._subpinnata_10,30/11/2016,A. subpinnata 10,,coral,A_subpinnata,autumn,6.3,-21,1.5,0.107,0.461,170912DC
+110,10/05/2017_A._subpinnata_1,10/5/2017,A. subpinnata 1,,coral,A_subpinnata,spring,6.4,-21.9,1.4,0.112,0.507,170912DC
+110,10/05/2017_A._subpinnata_1,10/5/2017,A. subpinnata 1,,coral,A_subpinnata,spring,6.1,-21.7,1.4,0.12,0.51,170912DC
+111,10/05/2017_A._subpinnata_2,10/5/2017,A. subpinnata 2,,coral,A_subpinnata,spring,6.2,-21.4,1.4,0.106,0.443,170912DC
+112,10/05/2017_A._subpinnata_3,10/5/2017,A. subpinnata 3,,coral,A_subpinnata,spring,6.3,-21.9,1.4,0.118,0.517,170912DC
+113,10/05/2017_A._subpinnata_4,10/5/2017,A. subpinnata 4,,coral,A_subpinnata,spring,6,-22,1.4,0.119,0.5,170912DC
+114,10/05/2017_A._subpinnata_5,10/5/2017,A. subpinnata 5,,coral,A_subpinnata,spring,5.8,-22,1.4,0.144,0.557,170912DC
+115,10/05/2017_A._subpinnata_6,10/5/2017,A. subpinnata 6,,coral,A_subpinnata,spring,6,-22,1.4,0.112,0.49,170912DC
+116,10/05/2017_A._subpinnata_7,10/5/2017,A. subpinnata 7,,coral,A_subpinnata,spring,6.3,-22.2,1.5,0.119,0.51,170912DC
+117,10/05/2017_A._subpinnata_8,10/5/2017,A. subpinnata 8,,coral,A_subpinnata,spring,6.2,-21.8,1.4,0.121,0.496,170912DC
+118,10/05/2017_A._subpinnata_9,10/5/2017,A. subpinnata 9,,coral,A_subpinnata,spring,5.9,-22.1,1.5,0.124,0.521,170912DC
+119,10/05/2017_A._subpinnata_10,10/5/2017,A. subpinnata 10,,coral,A_subpinnata,spring,6.1,-21.8,1.4,0.108,0.45,170912DC
+119,10/05/2017_A._subpinnata_10,10/5/2017,A. subpinnata 10,,coral,A_subpinnata,spring,6.1,-22,1.4,0.109,0.47,170912DC
+120,30/11/2016_E._cavolini_1,30/11/2016,E. cavolini 1,,coral,E_cavolini,autumn,5.5,-15,3.2,0.085,0.635,170912DD
+121,30/11/2016_E._cavolini_2,30/11/2016,E. cavolini 2,,coral,E_cavolini,autumn,5.6,-14.7,3.1,0.088,0.605,170912DD
+122,30/11/2016_E._cavolini_3,30/11/2016,E. cavolini 3,,coral,E_cavolini,autumn,5.8,-15.1,3.1,0.083,0.619,170912DD
+123,30/11/2016_E._cavolini_4,30/11/2016,E. cavolini 4,,coral,E_cavolini,autumn,5.7,-15.8,3.2,0.097,0.659,170912DD
+124,30/11/2016_E._cavolini_5,30/11/2016,E. cavolini 5,,coral,E_cavolini,autumn,5.6,-15.2,3.1,0.096,0.654,170912DD
+125,30/11/2016_E._cavolini_6,30/11/2016,E. cavolini 6,,coral,E_cavolini,autumn,5.6,-17.5,3.1,0.115,0.737,170912DD
+125,30/11/2016_E._cavolini_6,30/11/2016,E. cavolini 6,,coral,E_cavolini,autumn,5.6,-17.2,3.1,0.115,0.74,170912DD
+126,10/05/2017_E._cavolini_1,10/5/2017,E. cavolini 1,,coral,E_cavolini,spring,5.8,-17.8,3.1,0.11,0.759,170912DD
+127,10/05/2017_E._cavolini_2,10/5/2017,E. cavolini 2,,coral,E_cavolini,spring,6.2,-12.9,3.1,0.075,0.584,170912DD
+128,10/05/2017_E._cavolini_3,10/5/2017,E. cavolini 3,,coral,E_cavolini,spring,6,-13.8,3.1,0.084,0.613,170912DD
+128,10/05/2017_E._cavolini_3,10/5/2017,E. cavolini 3,,coral,E_cavolini,spring,5.9,-13.8,3.1,0.085,0.617,170912DD
+129,10/05/2017_E._cavolini_4,10/5/2017,E. cavolini 4,,coral,E_cavolini,spring,5.8,-12.7,3.1,0.066,0.569,170912DD
+130,10/05/2017_E._cavolini_5,10/5/2017,E. cavolini 5,,coral,E_cavolini,spring,6,-14.2,3.1,0.086,0.633,170912DD
+130,10/05/2017_E._cavolini_5,10/5/2017,E. cavolini 5,,coral,E_cavolini,spring,6,-14.3,3.1,0.088,0.636,170912DD
+131,10/05/2017_E._cavolini_6,10/5/2017,E. cavolini 6,,coral,E_cavolini,spring,5.6,-14.9,3.1,0.099,0.649,170912DD
+132,30/11/2016_sediment_1,30/11/2016,sediment 1,,sediment,sediment,autumn,,-5.7,13.8,,0.512,170912DE
+132,30/11/2016_sediment_1,30/11/2016,sediment 1,,sediment,sediment,autumn,,-5.7,13.7,,0.5,170912DE
+132,30/11/2016_sediment_1,30/11/2016,sediment 1,,sediment,sediment,autumn,3.9,,37.3,0.042,,170912DH
+133,30/11/2016_sediment_2,30/11/2016,sediment 2,,sediment,sediment,autumn,,0.6,4.8,,0.449,170912DE
+133,30/11/2016_sediment_2,30/11/2016,sediment 2,,sediment,sediment,autumn,,0.6,4.7,,0.446,170912DE
+133,30/11/2016_sediment_2,30/11/2016,sediment 2,,sediment,sediment,autumn,3.7,,70.6,0.046,,170912DH
+134,30/11/2016_sediment_3,30/11/2016,sediment 3,,sediment,sediment,autumn,,0.4,5.1,,0.446,170912DE
+134,30/11/2016_sediment_3,30/11/2016,sediment 3,,sediment,sediment,autumn,,0.4,5.1,,0.455,170912DE
+134,30/11/2016_sediment_3,30/11/2016,sediment 3,,sediment,sediment,autumn,2.5,,71.5,0.046,,170912DH
+135,10/05/2017_sediment_1,10/5/2017,sediment 1,,sediment,sediment,spring,,0,5.5,,0.45,170912DE
+135,10/05/2017_sediment_1,10/5/2017,sediment 1,,sediment,sediment,spring,,0.2,5.6,,0.311,170912DE
+135,10/05/2017_sediment_1,10/5/2017,sediment 1,,sediment,sediment,spring,3.9,,75.6,0.06,,170912DH
+136,10/05/2017_sediment_2,10/5/2017,sediment 2,,sediment,sediment,spring,,0.8,4.6,,0.43,170912DE
+136,10/05/2017_sediment_2,10/5/2017,sediment 2,,sediment,sediment,spring,,0.7,4.5,,0.429,170912DE
+136,10/05/2017_sediment_2,10/5/2017,sediment 2,,sediment,sediment,spring,1,,75.4,0.042,,170912DH
+137,10/05/2017_sediment_3,10/5/2017,sediment 3,,sediment,sediment,spring,,-0.2,5.2,,0.431,170912DE
+137,10/05/2017_sediment_3,10/5/2017,sediment 3,,sediment,sediment,spring,,-0.2,5.2,,0.43,170912DE
+137,10/05/2017_sediment_3,10/5/2017,sediment 3,,sediment,sediment,spring,1.3,,75.8,0.062,,170912DH
