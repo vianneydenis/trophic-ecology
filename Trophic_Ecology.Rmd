@@ -156,7 +156,7 @@ You can also save this plot because it is beautiful.
 
 *Inorganic Carbon and lipid effects*
 
-- Carbonate: First we want to test whether there is evidence for an effect of inorganic carbon on the carbon isotope values. If this was a factor we would expect to see a positive relationship between %C and d13C. Why?
+- Carbonate: First we want to test whether there is evidence for an effect of inorganic carbon on the carbon isotope values. If this was a factor we would expect to see a positive relationship between %C and d13C.
 
 ```{r, eval=TRUE}
 # Carbonate effect
@@ -168,12 +168,11 @@ Carbonate.plot<-ggplot(New.data, aes(x=mgC, y=d13C)) +
 Carbonate.plot 
 ```
 
-There is no strong evidence of inorganic C in these samples, so we can continue. We would expect a positive relationship if carbonate effect.
-In addition, the sammples have already been acidified. Still it is a good pratice to check.  
+Indeed, the samples have already been acidified. The variation of δ13C indicated a decrease with a greater accumulation of carbon. 
 
-- Lipid: Lipids contain carbon but no nitrogen AND are 13C depleted relative to protein (i.e. muscle). So, lipid rich samples will be depleted in 13C, in extreme cases this may bias our interpretation of their position in the food web.
+- Lipid: As a general rule, lipids contain carbon but no nitrogen AND are 13C depleted relative to protein (i.e. muscle). So, lipid rich samples will be depleted in 13C, in extreme cases this may bias our interpretation of their position in the food web.
 
-Pure protein has an elemental C:N ratio of 3 (2.8 - 3.2), C:N values above this are indicative of lipids in the matrix. There are two otpions to deal with this: you can remove lipids from the sample using repeated washes in a 2:1 chloroform:methanol solution or using a lipid correction model (not suitable for invertebrates).
+Pure protein has an elemental C:N ratio of 3 (2.8 - 3.2), C:N values above this are indicative of lipids in the matrix. There are two options to deal with this: you can remove lipids from the sample using repeated washes in a 2:1 chloroform:methanol solution or using a lipid correction model (not suitable for invertebrates). For corals, well that's complicated. C:N values are generally much higher. 
 
 We can look at this relationship in two ways. First let's test whether there is a relationship between C:N and d13C in our samples. What relationship would we expect if lipid was having an effect on the d13C values of the coral?
 
@@ -202,7 +201,7 @@ Lipid.boxplot<-ggplot(subset(Data, Type == "coral"), aes(x=Category, group = Cat
 Lipid.boxplot  
 ```
 
-Lipid removal could have been beneficial, but in corals C:N is generally high independently of lipid removal.
+Lipid removal could have be beneficial. But in corals C:N is generally high independently of lipid removal.
 
 We went through these comparisons individually here, but you can use pairs plopts to summarise much of this information. As ever, there is a ‘Hadleyverse' option, `ggpairs`, in the GGally package. These are coarse plots but an excellent way to take a first look at your data.
 
