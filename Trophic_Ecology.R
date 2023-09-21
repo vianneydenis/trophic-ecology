@@ -1,15 +1,15 @@
 knitr::purl("Trophic_Ecology.Rmd", documentation = F)
 
-library (ggplot2)
-library (reshape2)
-library(plyr)
-library(GGally)
-library(SIBER)
-library(MixSIAR)
-library(R2WinBUGS)
-library(splancs)
-library(tidyr)
-library(dplyr)
+library (ggplot2) # data visualization
+library(GGally) # data visualization
+library (reshape2) # data manipulation
+library(plyr) # data manipulation
+library(tidyr) # data manipulation
+library(dplyr) # data manipulation
+library(splancs) # display and analysis of spatial point pattern data
+library(R2WinBUGS) # Bayesian analysis
+library(SIBER) # trophic niche  
+library(MixSIAR) # mixing model 
 
 # Load your data
 Dataset <- read.csv("Data/Dataset.csv") # Import a file
@@ -88,7 +88,7 @@ Lipid.boxplot<-ggplot(subset(Data, Type == "coral"), aes(x=Category, group = Cat
   geom_boxplot() +
   geom_point(position="jitter")+
   ylim(3,9) +
-  geom_hline(aes(yintercept=4), colour="red") +
+  geom_hline(aes(yintercept=7), colour="red") +
   facet_grid(. ~ Season) +
   theme_bw()
 

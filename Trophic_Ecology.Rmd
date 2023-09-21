@@ -21,31 +21,31 @@ A (too) broad interest on coral reefs from physiological ecology to ecosystem ec
 
 ### R and stable isotope data
 
-You are probably already familiar or already probably heard about R. You may not be proficient in using it, and the aim of this class is to introduce some common and more advanced tools to analyse stable isotope in the field of trophic ecology. This class will not come back on general knowledge of what is an isotope and how they can be useful for ecology (see previous courses), but it will focus on more technical details which are how we analyse the data. In particular, we will navigate in R functions allowing to visualize stable isotope data and we will go through common R packages used in trophic ecology. 
+You are probably already familiar or already probably heard about R. You may not be proficient in using it, and the aim of this class is to introduce some common and more advanced tools to analyse stable isotope in the field of trophic ecology. This class will not come back on general knowledge of what is an isotope and how they can be useful for ecology (see previous courses), but it will focus on more technical details which are how we analyse the data. In particular, we will navigate in R packages/functions allowing to visualize stable isotope data and we will go through common R packages used in trophic ecology. 
 
-I will use Posit (ex R Studio) for the demo. If you have it installed on your computer, you are welcome to use it but make sure it is updated with the latest version of R and Posit. This class has been optimized for a use with **posit** Cloud. You can register and use it  for free  with, of course, some limitation on computing time (25 hrs) and RAM (1GB). That should be okay for those two days. 
+I will use Posit (ex RStudio) for the demo. If you have it installed on your computer, you can use it but make sure it is updated with the latest version of R/Posit. This class has also been optimized for a use with **posit** Cloud. You can register and use it  for free  with, of course, some limitation on computing time (25 hrs) and RAM (1GB). That should be okay largely enough for two days if you close it after the class. 
 
-GUI of Posit is pretty standard: script editor, console, environment, files - plots - packages windows. That's all we need for now.
+GUI of Posit/RStudio is pretty standard: script editor, console, environment, files - plots - packages windows. That's all we need for now.
 
 ### R Markdown to load and plot data
 
-This is an R Markdown document. A kind of R script but with some bonus taht let you to annotate and explain what you did. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This is an R Markdown document. A kind of R script but with some 'bonus' that let you to annotate and explain what you did. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-We'll use this to compile and store all the r code used during the class. This way you can edit and improve the scripts as you go on and even copy relevant sections for other projects. This markdown is being saved as a html document but you can also open the markdown directly as you will see on my screen.
+We'll use this to compile and store all the r code used during the class. This way you can edit and improve the scripts as you go on and even copy relevant sections for other projects. This markdown is being saved as a html document but you can also open the markdown directly as you  see on my screen.
 
 Now we need to install and load the packages we will be using during the workshop. You can use the Packages wizard in posit (bottom right) to install each of these and then load them all using the following chuck of code. It is going to give you a few messages to let you know some info about the package versions but also if their is any problems with them  
 
 ```{r, message=F, warning=FALSE}
-library (ggplot2)
-library (reshape2)
-library(plyr)
-library(GGally)
-library(SIBER)
-library(MixSIAR)
-library(R2WinBUGS)
-library(splancs)
-library(tidyr)
-library(dplyr)
+library (ggplot2) # data visualization
+library(GGally) # data visualization
+library (reshape2) # data manipulation
+library(plyr) # data manipulation
+library(tidyr) # data manipulation
+library(dplyr) # data manipulation
+library(splancs) # display and analysis of spatial point pattern data
+library(R2WinBUGS) # Bayesian analysis
+library(SIBER) # trophic niche  
+library(MixSIAR) # mixing model 
 ```
 
 ### Credit
@@ -59,10 +59,11 @@ Amazing series of videos on trophic ecology and stable isotope analysis  on his 
 
 Here we will load in an isotope dataset and have a look for outliers and other issues we need to be concerned about.
 
-First load the data associated with this workshop (the file is named *Dataset*). We will manipulate and trasnform this dataset as we work)
-This file contains carbon and nitrogen data for two coral species (one black coral and one gorgonian coral) and their possible food sources. Part of the data are publish and available at: https://www.sciencedirect.com/science/article/pii/S0272771418310606 
+First load the data associated with this workshop (the file is named *Dataset*). We will manipulate and transform this dataset as we work)
+This file contains carbon and nitrogen data for two coral species (one black coral and one gorgonian coral) and their possible food sources. Part of the data are published and available at: https://www.sciencedirect.com/science/article/pii/S0272771418310606 
 
-Generally speaking, your data should already have been tidied up, probably in Excel, so as to remove any of the additional lines at the start that often come back from analytical laboratories. R uses 'raw' format. It means you need to keep your datasheet very simple (no color ot any other fancy format). Just be boring. As with all data files, your first line (row) should be the names of each of the columns. When naming columns, it is important to not use any unusual, non-standard characters, as these can confuse the functions that are parsing (reading and processing) the datafile: if you need to separate words in a column header you should use "_" or ".", e.g. "delta_C" or "delta.C" but not "delta/C".
+Generally speaking, your data should already have been tidied up, probably in Excel, so you removed any of the additional lines at the start that often come back from analytical laboratories. R uses 'raw' format. It means you need to keep your datasheet very simple (no color or any other fancy format). Just be boring, that's good for R. As with all data files, your first line (row) should be the names of each of the columns. When naming columns, it is important to not use any unusual, non-standard characters, as these can confuse the functions that are parsing (reading and processing) the data file: if you need to separate words in a column header you should use "_" or ".", e.g. "delta_C" or "delta.C" but not "delta/C". It is generally not recommended to have spaces.
+
 
 ```{r, eval=TRUE}
 # Load your data
@@ -72,7 +73,7 @@ Dataset <- read.csv("Data/Dataset.csv") # Import a file
 head(Dataset) # see the head
 ```
 
-Get familiar with the different variables. You can further examine the structure of this data `str(Dataset)`. Importantly, you can note that information on the station and depth have been merged together. Also note the missing data, mostly at the `tail` of the data set. For the purpose of this demonstration, we will remove useless variables and make a simplified dataset. 
+Get familiar with the different variables. You can further examine the structure of this data `str(Dataset)`. Importantly, you can note that information on the station and depth have been merged together. Also note the presence of missing data, mostly at the `tail` of the data set. For the purpose of this demonstration, we will remove useless variables and make a simplified dataset. 
 
 
 ```{r, eval=TRUE}
@@ -83,7 +84,7 @@ Data[,c("Reference", "Date_Station_Type", "Date", "Station", "Other", "RunNo" )]
 head(Data) 
 ```
 
-It is not so easy to get summary statistics on each category within our data set using the basic R functions. There are many packages out there to help, but Hadley Wickham's suite of packages are impossible to beat, and we will be using his `ggplot2` package for pretty graphs later on so lets stick with the ["Hadleyverse"](https://www.tidyverse.org/)  of functions. We installed `ggplot2` and `tidyr` packages, but the complete tidyverse collection can be installed with: `install.packages("tidyverse")`.
+It is not so easy to get summary statistics on each category within our data set using the basic R functions. There are many packages out there to help, but Hadley Wickham's suite of packages are impossible to beat, and we will be using his `ggplot2` package for pretty graphs later.Let's stick with the ["Hadleyverse"](https://www.tidyverse.org/) of functions. We installed `ggplot2` and `tidyr` packages, but the complete tidyverse collection can directly be installed at once with: `install.packages("tidyverse")`.
 
 ```{r, eval=TRUE}
 # Some quick summary
@@ -114,7 +115,7 @@ head(A_subpinnata_spring)
 
 ### Basic Visualisation
 
-Visualising the data is often the next step. You can generate histograms of the data very easily.Lets compare isotope ratios between the two coral species. Here we are primarily interested in d13C values of *A. subpinnata* and *E. cavolini*.
+Visualizing the data is often the next step. You can generate histograms of the data very easily. Let's compare isotope ratios between the two coral species. Here we are primarily interested in d13C values of *A. subpinnata* and *E. cavolini*.
 
 ```{r, eval=TRUE}
 # Plotting isotope data: d13C only (or any other variable)
@@ -156,7 +157,7 @@ You can also save this plot because it is beautiful.
 
 *Inorganic Carbon and lipid effects*
 
-- Carbonate: First we want to test whether there is evidence for an effect of inorganic carbon on the carbon isotope values. If this was a factor we would expect to see a positive relationship between %C and d13C.
+- Carbonate: At first, we may want to test whether there is evidence for an effect of inorganic carbon on the carbon isotope values. If this was a factor we would expect to see a positive relationship between %C and d13C. Here, the  d13C data we got are already from samples that have been acidified and in which carbonates have been remove. Yet, for the fun we can make the plot: 
 
 ```{r, eval=TRUE}
 # Carbonate effect
@@ -168,7 +169,7 @@ Carbonate.plot<-ggplot(New.data, aes(x=mgC, y=d13C)) +
 Carbonate.plot 
 ```
 
-Indeed, the samples have already been acidified. The variation of δ13C indicated a decrease with a greater accumulation of carbon. 
+The variation of δ13C indicated a decrease with a greater accumulation of carbon. 
 
 - Lipid: As a general rule, lipids contain carbon but no nitrogen AND are 13C depleted relative to protein (i.e. muscle). So, lipid rich samples will be depleted in 13C, in extreme cases this may bias our interpretation of their position in the food web.
 
@@ -186,7 +187,7 @@ Lipid.plot<-ggplot(New.data, aes(x=CN, y=d13C)) +
 Lipid.plot 
 ```
 
-Alternatively we can identify whether any individuals / populations have C:N values above a threshold (3.5?)
+Alternatively we can identify whether any individuals / populations have C:N values above a threshold. A CN ratio of 7 is usual for corals
 
 ```{r, eval=TRUE}
 # Lipid effect threshold
@@ -194,16 +195,16 @@ Lipid.boxplot<-ggplot(subset(Data, Type == "coral"), aes(x=Category, group = Cat
   geom_boxplot() +
   geom_point(position="jitter")+
   ylim(3,9) +
-  geom_hline(aes(yintercept=4), colour="red") +
+  geom_hline(aes(yintercept=7), colour="red") +
   facet_grid(. ~ Season) +
   theme_bw()
 
 Lipid.boxplot  
 ```
 
-Lipid removal could have be beneficial. But in corals C:N is generally high independently of lipid removal.
+Lipid removal may have been beneficial, but in corals C:N is generally high independently of lipid removal. This is also taxon specific, so some preliminary test are usually advised. Know your beast! There is a lot of literature on the topic. 
 
-We went through these comparisons individually here, but you can use pairs plopts to summarise much of this information. As ever, there is a ‘Hadleyverse' option, `ggpairs`, in the GGally package. These are coarse plots but an excellent way to take a first look at your data.
+We went through these comparisons individually here, but you can use pairs plots to summarize much of this information. As ever, there is a ‘Hadleyverse' option, `ggpairs`, in the GGally package. These are coarse plots but an excellent way to take a first look at your data.
 
 ```{r, eval=TRUE}
 # Pair plot
@@ -259,7 +260,7 @@ Sum.biplot
 ggsave("Plots/Sum_biplot.pdf")
 ```
 
-The initial question in study was whether *A. subpinnata* and *E. cavolini* used different resources (i.e. had different isotope ratios) in the two seasons. Do they? Lets start with a biplot to visualise the difference between the two coral species
+The initial question in study was whether *A. subpinnata* and *E. cavolini* used different resources (i.e. had different isotope ratios) in the two seasons. Do they? Lets start with a biplot to visualize the difference between the two coral species
 
 ```{r, eval=TRUE}
 # Coral biplot
@@ -286,7 +287,7 @@ We can see that the species have different isotope ratios but what does this mea
 knitr::include_graphics("Figures/2_sources.png")
 ```
 
-The first step is to identify the baseline values. Here we will use pico-nanoplanton and POM (sediment) as pelagic and littoral endmembers respectively.
+The first step is to identify the baseline values. Here we will use pico-nanoplanton and POM (sediment) as pelagic and littoral end-members respectively.
 
 ```{r, eval=TRUE}
 # Endmember selection
