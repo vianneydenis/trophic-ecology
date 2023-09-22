@@ -68,12 +68,22 @@ Melt.boxplot<-ggplot(Melt.data, aes(x=Category, group = Category, y=value, colou
 Melt.boxplot
 
 # Carbonate effect
-Carbonate.plot<-ggplot(New.data, aes(x=mgC, y=d13C)) +
+
+New.data$perc_C<-New.data$mgC/(New.data$mgC+New.data$mgN)
+
+Carbonate.plot<-ggplot(New.data, aes(x=perc_C, y=d13C)) +
   geom_point() +
   geom_smooth(method = "lm", se=T,formula=y~x) +
   facet_grid(Category ~ Season, scales = "free_x")
 
 Carbonate.plot 
+
+Organic.plot<-ggplot(New.data, aes(x=mgC, y=d13C)) +
+  geom_point() +
+  geom_smooth(method = "lm", se=T,formula=y~x) +
+  facet_grid(Category ~ Season, scales = "free_x")
+
+Organic.plot
 
 # Lipid effect raw
 Lipid.plot<-ggplot(New.data, aes(x=CN, y=d13C)) +
