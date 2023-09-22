@@ -161,7 +161,10 @@ You can also save this plot because it is beautiful.
 
 ```{r, eval=TRUE}
 # Carbonate effect
-Carbonate.plot<-ggplot(New.data, aes(x=mgC, y=d13C)) +
+
+New.data$perc_C<-New.data$mgC/(New.data$mgC+New.data$mgN)
+
+Carbonate.plot<-ggplot(New.data, aes(x=perc_C, y=d13C)) +
   geom_point() +
   geom_smooth(method = "lm", se=T,formula=y~x) +
   facet_grid(Category ~ Season, scales = "free_x")
@@ -169,7 +172,19 @@ Carbonate.plot<-ggplot(New.data, aes(x=mgC, y=d13C)) +
 Carbonate.plot 
 ```
 
-The variation of δ13C indicated a decrease with a greater accumulation of carbon. 
+Samples have been acidified and inorganic carbon removed.
+
+```{r, eval=TRUE}
+Organic.plot<-ggplot(New.data, aes(x=mgC, y=d13C)) +
+  geom_point() +
+  geom_smooth(method = "lm", se=T,formula=y~x) +
+  facet_grid(Category ~ Season, scales = "free_x")
+
+Organic.plot
+```
+
+d13C decrease with accumulation of biomass: could be a question of turnover?
+
 
 - Lipid: As a general rule, lipids contain carbon but no nitrogen AND are 13C depleted relative to protein (i.e. muscle). So, lipid rich samples will be depleted in 13C, in extreme cases this may bias our interpretation of their position in the food web.
 
