@@ -31,15 +31,15 @@ Data.sum.1<-ddply(Data, c("Season", "Category"), summarise,
                 mN = round(mean(d15N, na.rm=T), digits=1), sdN = round(sd(d15N, na.rm=T), digits=1))
 head(Data.sum.1)
 ## coral only
-Coral<-subset(Dataset, Type == "coral")
+Coral<-subset(Data, Type == "coral")
 Coral.sum.1<-ddply(Coral, c("Season", "Category"), summarise,
                 count = length(Category),
                 mC = round(mean(d13C), digits=1), sdC = round(sd(d13C), digits=1), 
                 mN = round(mean(d15N), digits=1), sdN = round(sd(d15N), digits=1))
-head(Coral.sum.1)
+Coral.sum.1
 
 # A subset of the data set
-A_subpinnata_spring<-subset(Data, Category == "A_subpinnata" | Season == "Spring")
+A_subpinnata_spring<-subset(Data, Category == "A_subpinnata" | Season == "spring")
 head(A_subpinnata_spring)
 
 # Plotting isotope data: d13C only (or any other variable)
@@ -77,13 +77,6 @@ Carbonate.plot<-ggplot(New.data, aes(x=perc_C, y=d13C)) +
   facet_grid(Category ~ Season, scales = "free_x")
 
 Carbonate.plot 
-
-Organic.plot<-ggplot(New.data, aes(x=mgC, y=d13C)) +
-  geom_point() +
-  geom_smooth(method = "lm", se=T,formula=y~x) +
-  facet_grid(Category ~ Season, scales = "free_x")
-
-Organic.plot
 
 # Lipid effect raw
 Lipid.plot<-ggplot(New.data, aes(x=CN, y=d13C)) +
@@ -135,8 +128,8 @@ Sum.biplot<-ggplot(Data.sum, aes(x=d13Cmn, y=d15Nmn, colour=Category, shape =Cat
   geom_point(size=3) + 
   geom_errorbar(Ylims, width=0.2) + 
   geom_errorbarh(Xlims, height=0.2) +
-  ylab(expression(delta^{15}~N)) +
-  xlab(expression(delta^{13}~C)) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
   facet_grid(. ~ Season)+
   theme_bw()
 
@@ -147,7 +140,7 @@ ggsave("Plots/Sum_biplot.pdf")
 # Coral biplot
 Coral.biplot<-ggplot(subset(Data, Category == "A_subpinnata" | Category == "E_cavolini"), aes(x=d13C, y=d15N, colour = Category)) +
   geom_point() +
-  stat_ellipse() +
+  stat_ellipse() + # 95%
   facet_grid(. ~ Season)+
   theme_bw()
 

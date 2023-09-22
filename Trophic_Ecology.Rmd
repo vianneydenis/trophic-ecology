@@ -1,7 +1,7 @@
 ---
 title: "Trophic_class"
 author: "Vianney DENIS"
-date: "2023-08-01"
+date: "2023-09-29"
 output: html_document
 ---
 
@@ -95,12 +95,12 @@ Data.sum.1<-ddply(Data, c("Season", "Category"), summarise,
                 mN = round(mean(d15N, na.rm=T), digits=1), sdN = round(sd(d15N, na.rm=T), digits=1))
 head(Data.sum.1)
 ## coral only
-Coral<-subset(Dataset, Type == "coral")
+Coral<-subset(Data, Type == "coral")
 Coral.sum.1<-ddply(Coral, c("Season", "Category"), summarise,
                 count = length(Category),
                 mC = round(mean(d13C), digits=1), sdC = round(sd(d13C), digits=1), 
                 mN = round(mean(d15N), digits=1), sdN = round(sd(d15N), digits=1))
-head(Coral.sum.1)
+Coral.sum.1
 ```
 
 Here, it is important to notice how managed here the missing data (`NA`) as it will influence later visualization and analysis. Also note that for stable isotope values, you should reduce decimal to match resolution of the mass spectrometer. 
@@ -109,7 +109,7 @@ There is quite a bit here but we can also use subset of the data set.
 
 ```{r, eval=TRUE}
 # A subset of the data set
-A_subpinnata_spring<-subset(Data, Category == "A_subpinnata" | Season == "Spring")
+A_subpinnata_spring<-subset(Data, Category == "A_subpinnata" | Season == "spring")
 head(A_subpinnata_spring)
 ```
 
@@ -174,18 +174,6 @@ Carbonate.plot
 
 Samples have been acidified and inorganic carbon removed.
 
-```{r, eval=TRUE}
-Organic.plot<-ggplot(New.data, aes(x=mgC, y=d13C)) +
-  geom_point() +
-  geom_smooth(method = "lm", se=T,formula=y~x) +
-  facet_grid(Category ~ Season, scales = "free_x")
-
-Organic.plot
-```
-
-d13C decrease with accumulation of biomass: could be a question of turnover?
-
-
 - Lipid: As a general rule, lipids contain carbon but no nitrogen AND are 13C depleted relative to protein (i.e. muscle). So, lipid rich samples will be depleted in 13C, in extreme cases this may bias our interpretation of their position in the food web.
 
 Pure protein has an elemental C:N ratio of 3 (2.8 - 3.2), C:N values above this are indicative of lipids in the matrix. There are two options to deal with this: you can remove lipids from the sample using repeated washes in a 2:1 chloroform:methanol solution or using a lipid correction model (not suitable for invertebrates). For corals, well that's complicated. C:N values are generally much higher. 
@@ -244,7 +232,7 @@ Iso.biplot
 ggsave("Plots/Iso_biplots.pdf")
 ```
 
-Here the warning is important as it indicates that you have missing data. As for an examples, none of the sediment samples were measured for both d15N and d13C. The x- and y-axes will be adjusted accoding to these values but not data will be plotted. 
+Here the warning is important as it indicates that you have missing data. As for an examples, none of the sediment samples were measured for both d15N and d13C. The x- and y-axes will be adjusted according to these values but no data will be plotted. 
 
 Finally lets look at a summary biplot for both seasons
 
@@ -265,8 +253,8 @@ Sum.biplot<-ggplot(Data.sum, aes(x=d13Cmn, y=d15Nmn, colour=Category, shape =Cat
   geom_point(size=3) + 
   geom_errorbar(Ylims, width=0.2) + 
   geom_errorbarh(Xlims, height=0.2) +
-  ylab(expression(delta^{15}~N)) +
-  xlab(expression(delta^{13}~C)) +
+  ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+  xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
   facet_grid(. ~ Season)+
   theme_bw()
 
@@ -281,7 +269,7 @@ The initial question in study was whether *A. subpinnata* and *E. cavolini* used
 # Coral biplot
 Coral.biplot<-ggplot(subset(Data, Category == "A_subpinnata" | Category == "E_cavolini"), aes(x=d13C, y=d15N, colour = Category)) +
   geom_point() +
-  stat_ellipse() +
+  stat_ellipse() + # 95%
   facet_grid(. ~ Season)+
   theme_bw()
 
@@ -355,7 +343,7 @@ resource.boxplot.2<-ggplot(subset(mm.data, Category == "A_subpinnata" | Category
 resource.boxplot.2
 ```
 
-Congratulaions!! You just ran your first stable isotope mixing model, easy huh!
+Congratulations!! You just ran your first stable isotope mixing model, easy huh!
 
 At both seasons *A. subpinnata* assimilates predominantly pelagic resources compared with *E. cavolini*. Both species are segregated along a pelagic-littoral axis.
 
