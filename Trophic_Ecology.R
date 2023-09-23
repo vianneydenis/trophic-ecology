@@ -217,20 +217,20 @@ rownames(Tef)<-c("mesoplankton" , "microplankton" , "pico-nanoplankton" , "sedim
 write.csv(Tef, "Data/Tef.csv", row.names=T) # "/cloud/project/Tef.csv"
 
 
-# Consomers
+# Consumers
 
 mix <- load_mix_data(filename = "Data/Cons.csv", #"/cloud/project/Cons.csv"
                      iso_names = c("d13C","d15N"),
                      factors   = c("Season", "Category"),
                      fac_random = c(FALSE,FALSE), # very important here  T / F
                      fac_nested = c(TRUE,FALSE), # very important here F / T
-                     cont_effects = NULL) # very important here
+                     cont_effects = NULL) # if you have gradient for example
 
 # Sources
 
 source <- load_source_data(filename = "Data/Sources.csv", #"/cloud/project/Sources.csv"
                            source_factors = "Season", 
-                           conc_dep = FALSE, 
+                           conc_dep = FALSE, # concentration dependent 
                            data_type = "means", 
                            mix)
 
@@ -244,6 +244,9 @@ plot_data(filename="Plots/isospace_plot", plot_save_pdf=FALSE, plot_save_png=TRU
 # default "UNINFORMATIVE" / GENERALIST prior (alpha = 1)
 plot_prior(filename="Plots/prior_plot", alpha.prior=c(1),source, plot_save_png = TRUE, plot_save_pdf=FALSE)
 
+# View an 'informative' prior 
+plot_prior(alpha.prior=c(0.1,0.5,1,1),source, plot_save_png = FALSE, plot_save_pdf=FALSE)
+
 # Write the JAGS model file
 model_filename <- "MixSIAR_model.txt"   # Name of the JAGS model file
 resid_err <- TRUE
@@ -253,8 +256,10 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 run <- list(chainLength=1000, burn=500, thin=1, chains=3, calcDIC=TRUE)
 
 ## # not run
-## jags.1 <- run_model(run="test", mix, source, discr, model_filename,
-##                     alpha.prior = 1, resid_err, process_err)
+## jags.1 <- run_model(run="test", mix, source, discr, model_filename, alpha.prior = 1, resid_err, process_err)
+## 
+## # jags.1 <- run_model(run="normal", mix, source, discr, model_filename, alpha.prior = 1, resid_err, process_err)
+## # you can weight priors in the lines below
 
 ## #not run
 ## output_options <- list(summary_save = TRUE,
