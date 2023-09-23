@@ -669,7 +669,7 @@ plotSiberObject(Siber.g.example,
                   )
 ```
 
-Okay, so we have now visualized the isotopic niche of each population but how about getting some data.We can obtain the convex hull area(TA), Standard Ellipse Area (SEA) and Standard Ellipse Area coorected (SEAc) based on the maximum likelihood estimates of the means and covariance matrices of each group.
+Okay, so we have now visualized the isotopic niche of each population but how about getting some data.We can obtain the convex hull area(TA), Standard Ellipse Area (SEA) and Standard Ellipse Area corrected (SEAc) based on the maximum likelihood estimates of the means and covariance matrices of each group.
 
 ```{r, eval=TRUE}
 # Calculate summary statistics for each group: TA, SEA and SEAc
@@ -745,7 +745,8 @@ Hurrah, the model ran successfully, next let's look at the output
 
 SEA.B <- siberEllipses(ellipses.posterior)
 
-siberDensityPlot(SEA.B, 
+siberDensityPlot(SEA.B,
+                xticklabels = c('Aut sub', 'Spr sub', 'Aut cav', 'Spr cav'), 
                 xlab = c("Community | Group"),
                 ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
                 bty = "L",
@@ -909,7 +910,8 @@ comm2.layman.ml <- laymanMetrics(Siber.c.example$ML.mu[[2]][1,1,],
 points(1:6, comm2.layman.ml$metrics, col = "red", pch = "x", lwd = 2)
 
 ```
-Alternatively we can pull oput a specific metric of interest and compare it between lakes. Here we compare **TA** and **Nr**
+
+Alternatively we can pull out a specific metric of interest and compare it between lakes. Here we compare **TA** and **Nr**
 
 ```{r, eval=TRUE}
 

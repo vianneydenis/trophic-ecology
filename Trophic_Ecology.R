@@ -407,7 +407,8 @@ ellipses.posterior <- siberMVN(Siber.g.example, parms, priors) #run the model
 
 SEA.B <- siberEllipses(ellipses.posterior)
 
-siberDensityPlot(SEA.B, 
+siberDensityPlot(SEA.B,
+                xticklabels = c('Aut sub', 'Spr sub', 'Aut cav', 'Spr cav'), 
                 xlab = c("Community | Group"),
                 ylab = expression("Standard Ellipse Area " ('\u2030' ^2) ),
                 bty = "L",
