@@ -290,7 +290,7 @@ We can see that the species have different isotope ratios but what does this mea
 knitr::include_graphics("Figures/2_sources.png")
 ```
 
-The first step is to identify the baseline values. Here we will use pico-nanoplanton and POM (sediment) as pelagic and littoral end-members respectively.
+The first step is to identify the baseline values. Here we will use pico-nanoplanton and POM (sediment) as pelagic/oceanic and littoral/coastal end-members respectively.
 
 ```{r, eval=TRUE}
 # Endmember selection
@@ -343,14 +343,12 @@ resource.boxplot.2<-ggplot(subset(mm.data, Category == "A_subpinnata" | Category
 resource.boxplot.2
 ```
 
-Congratulations!! You just ran your first stable isotope mixing model, easy huh!
-
-At both seasons *A. subpinnata* assimilates predominantly pelagic resources compared with *E. cavolini*. Both species are segregated along a pelagic-littoral axis.
+You just ran your first and simple stable isotope mixing model. At both seasons *A. subpinnata* assimilates predominantly pelagic resources compared with *E. cavolini*. Both species are segregated along a pelagic-littoral axis.
 
 ### Mixing models - three or more sources 
 
 
-Up to now we have looked at relatively simple two-endmembers mixing models. The previous 2 sources - 2 tracer model had several limitations:
+Up to now we have looked at relatively simple two-end members mixing models. The previous 2 sources - 2 tracers model had several limitations:
 
 - Cannot handle more than 2 sources
 - No variation in sources
@@ -369,7 +367,7 @@ knitr::include_graphics("Figures/Mixing_model.png")
 
 #### MixSIAR - solving complex stable isotope mixing models
 
-`MixSIAR` was developed by Brian Stock and is the result of a collaboration between Brice Semmens who developed `MixSIR` and Parnell et al. who developed `SIAR`. It is an incredibly powerful tool which can assess differences in resource use among different communities in a single model. It can be very complicated, and some of you better than I am in using this package. For the purpose of this demonstration we will just give a brief introduction to how to analyze our data set.
+`MixSIAR` was developed by Brian Stock and is the result of a collaboration between Brice Semmens who developed `MixSIR` and Parnell et al. who developed `SIAR`. It is an incredibly powerful tool which can assess differences in resource use among different communities in a single model. It can be very complicated, and some of you better than I am in using this package. For the purpose of this demonstration we will just give a **brief introduction** to how to analyze our data set.
 
 Here again, the code and notes are mostly extracted from materials shared by Brian Haydens. Himself credited Brian Stock and Brice Semmens who wrote a wonderful manual to accompany `MixSIAR` package [MixSIAR Manual](https://github.com/brianstock/MixSIAR/blob/master/Manual/mixsiar_manual_small.pdf). You can find it along with additional details about the package on GitHub (https://github.com/brianstock/MixSIAR) and the package is presented in Brians 2018 paper (https://peerj.com/article/5096.pdf). 
 
@@ -377,16 +375,17 @@ Here again, the code and notes are mostly extracted from materials shared by Bri
 
 You need a bit of manipulation here to format right the data sets that `MixSIAR` needs for the analysis. Here, we will compute all of them  directly in R but you could also load them individually from files you prepare in Excel.
 
-- Load mixture data (i.e consumers)
+- Write mixture data (i.e consumers)
 
 ```{r, eval=TRUE}
 ### consumer data
 Cons <- New.data # consumer data set
-Cons[,c("Type", "Weight", "mgN", "mgC", "C.N")]<-NULL
-write.csv(Cons, "Data/Cons.csv", row.names=T) # "/cloud/project/Cons.csv"
+Cons[,c("Type", "Weight", "mgN", "mgC", "CN", "perc_C")]<-NULL
+write.csv(Cons, "Data/Cons.csv", row.names=T) 
+# Note for Posit path "/cloud/project/Cons.csv" to ignore
 ```
 
-- Load the sources (note that conc_dep has been left out in this analysis)
+- Write the sources
 
 ```{r, eval=TRUE}
 Sub.data<-subset(Data, Category == "mesoplankton" | Category == "microplankton" | Category == "pico-nanoplankton" | Category == "sediment" )
@@ -398,12 +397,13 @@ Data.sum.2<-ddply(Sub.data, c("Season", "Category"), summarise,
 
 Sources<-Data.sum.2[,c(2,1,3,4,5,6)] # reshaping table
 Sources$n<-rep(1000,8) # treating n as unknown (see MixSiAR manual)
-write.csv(Sources, "Data/Sources.csv", row.names=F) # "/cloud/project/Sources.csv"
+write.csv(Sources, "Data/Sources.csv", row.names=F) 
+# Note for Posit path "/cloud/project/Sources.csv" to ignore
 ```
 
 Note the difference in  in n between d15N and d13C. Check `length(Data$d15N[!is.na(Data$d15N)])`and `length(Dataset$d13C[!is.na(Dataset$d13C)])`
 
-- Load the TEFs
+- Write the TEFs
 
 ```{r, eval=TRUE}
 Meand13C<-c(1.0, 1.0, 1.0,1.0)
@@ -412,7 +412,8 @@ Meand15N<-c(2.5, 2.5, 2.5, 2.5)
 SDd15N<-c(1, 1, 1, 1)
 Tef<- data.frame(Meand13C, SDd13C, Meand15N, SDd15N)
 rownames(Tef)<-c("mesoplankton" , "microplankton" , "pico-nanoplankton" , "sediment" )
-write.csv(Tef, "Data/Tef.csv", row.names=T) # "/cloud/project/Tef.csv"
+write.csv(Tef, "Data/Tef.csv", row.names=T)
+# Note for Posit path "/cloud/project/Tef.csv" to ignore
 ```
 
 ##### **Load data**
@@ -426,7 +427,7 @@ mix <- load_mix_data(filename = "Data/Cons.csv", #"/cloud/project/Cons.csv"
                      factors   = c("Season", "Category"),
                      fac_random = c(FALSE,FALSE), # very important here  T / F
                      fac_nested = c(TRUE,FALSE), # very important here F / T
-                     cont_effects = NULL) # if you have gradient for example
+                     cont_effects = NULL) # if you have gradient
 
 # Sources
 
@@ -436,9 +437,9 @@ source <- load_source_data(filename = "Data/Sources.csv", #"/cloud/project/Sourc
                            data_type = "means", 
                            mix)
 
-# TEF
+# TEFs
 
-discr <- load_discr_data(filename = "Data/Tef.csv", mix) # "/cloud/project/Tef.csv"
+discr <- load_discr_data(filename = "Data/Tef.csv", mix) 
 ```
 
 
@@ -455,27 +456,25 @@ This is your chance to check:
   `plot_save_pdf`: TRUE or FALSE, should MixSIAR save the plot as a .pdf?
   
   `plot_save_png`: TRUE or FALSE, should MixSIAR save the plot as a .png?
-
-You should *always* look at the isospace plot --- this is a good check that the data is loaded correctly, and that the isospace geometry makes sense. If the mixture data are well outside the source polygon, you have a serious violation of mixing model assumptions, and it must be true that either 1) You're missing a source, or 2) You're using an incorrect discrimination factor. MixSIAR, like SIAR, fits a residual error term, and thus will always find a solution *even if it is nonsensical.*
-
-Also note that the MixSIAR isospace plot adds the discrimination means *AND SDs* to the raw source values. This is because model uses the source + discrimination values to fit the mixture data, calculated as $\sqrt{\sigma^2_{source} + \sigma^2_{discr}}$, under the assumption of independence. Error bars indicate $\pm$ 1 SD.
-
-
+  
+  
+  
 ```{r, eval=TRUE}
 # Make an isospace plot
 plot_data(filename="Plots/isospace_plot", plot_save_pdf=FALSE, plot_save_png=TRUE, mix, source, discr)
 ```
+
 ![](Plots/isospace_plot_1_2.png)
+
+You should *always* look at the isospace plot --- this is a good check that the data is loaded correctly, and that the isospace geometry makes sense. If the mixture data are well outside the source polygon, you have a serious violation of mixing model assumptions, and it must be true that either 1) You're missing a source, or 2) You're using an incorrect discrimination factor. MixSIAR, like SIAR, fits a residual error term, and thus will always find a solution *even if it is nonsensical.*
+
+Also note that the MixSIAR isospace plot adds the discrimination means AND SDs to the raw source values. This is because model uses the source + discrimination values to fit the mixture data, calculated as $\sqrt{\sigma^2_{source} + \sigma^2_{discr}}$, under the assumption of independence. Error bars indicate $\pm$ 1 SD.
+
+
 
 ##### **Plot prior**
 
-Define your prior, and then plot using "plot_prior"
-
-+ RED = your prior
-+ DARK GREY = "uninformative"/generalist (alpha = 1)
-+ LIGHT GREY = "uninformative" Jeffrey's prior (alpha = 1/n.sources)
-
-Bayesian analyses require priors, and MixSIAR includes a `plot_prior` function to plot the prior on the mixture (diet) proportions (at the highest hierarchical level, p.global). The prior represents our knowledge about the proportions before we consider the biotracer data. A natural tendency is to want a flat/"uninformative" prior, where all values between 0 and 1 are equally likely. However, because proportions are not independent, there is no truly uninformative prior (e.g. the histograms are not flat). The best we can do with the Dirichlet distribution is set $\alpha$ = c(1,1,1,1), which is uninformative on the simplex. In other words, all combinations of the proportions are equally likely. See the section titled "Constructing informative Bayesian priors" in the forthcoming MixSIAR paper.
+Bayesian analyses require priors, and MixSIAR includes a `plot_prior` function to plot the prior on the mixture (diet) proportions (at the highest hierarchical level, p.global). The prior represents our **knowledge** about the proportions before we consider the biotracer data. A natural tendency is to want a flat/"uninformative" prior, where all values between 0 and 1 are equally likely. However, because proportions are not independent, there is no truly uninformative prior (e.g. the histograms are not flat). The best we can do with the Dirichlet distribution is set $\alpha$ = c(1,1,1,1), which is uninformative on the simplex. In other words, all combinations of the proportions are equally likely. See the section titled "Constructing informative Bayesian priors" in the forthcoming MixSIAR paper.
 
 Because the mean of the "uninformative" prior, $\alpha$ = c(1,1,1,1), is $\frac{1}{n.sources}$, we also call it the generalist prior. This reflects two facts: 1) it is not really uninformative, and 2) for weakly informative data it shifts the posterior towards a generalist diet, $p_1 = p_2 = p_3 = p_4 = \frac{1}{4}$. The amount of shift depends on the informativeness (quality and quantity) of the data.
 
@@ -486,17 +485,23 @@ plot_prior(filename="Plots/prior_plot", alpha.prior=c(1),source, plot_save_png =
 
 ![](Plots/prior_plot.png)
 
++ RED = your prior
+
++ DARK GREY = "uninformative"/generalist (alpha = 1 OR alpha = 1/n.sources )
+
+
+Following is an example of informative prior:
 
 
 ```{r, eval=TRUE}
 # View an 'informative' prior 
 plot_prior(alpha.prior=c(0.1,0.5,1,1),source, plot_save_png = FALSE, plot_save_pdf=FALSE)
 ```
-
+![](Plots/informative_prior_plot.png)
 
 ##### **Write JAGS model file**
     
-Write the JAGS model file (define model structure). The model will be saved as `model_filename` ("MixSIAR_model.txt" is default, but you may want to change if you create many different models).
+Write the JAGS model file (define model structure). The model will be saved as `model_filename` ("MixSIAR_model.txt" is default, but you may want to change it if you create many different models). It will define the overall structure of the Markov Chain Monte Carlo (MCMC) model.
 
 There are 3 error term options available:
 
@@ -504,9 +509,7 @@ There are 3 error term options available:
 2. Residual only (`resid_err = TRUE`, `process_err = FALSE`)
 3. Process only (`resid_err = FALSE`, `process_err = TRUE`)
 
-**In the Wolves Example we want the "Residual * Process" error option. The differences between "Residual * Process", "Residual only", and "Process only" are explained in Stock and Semmens (in revision).** TO UPDATE
-
-**Note:** If you have only 1 mix datapoint, you have no information about the mixture/consumer variability. In this case, we use the original MixSIR error model (which does not fit a residual error term). This is the same behavior as `siarsolo` in SIAR.
+The differences between "Residual * Process", "Residual only", and "Process only" are explained in [Stock and Semmens (2016)](https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecy.1517). If you have only 1 mix datapoint, you have no information about the mixture/consumer variability. In this case, we use the original MixSIR error model (which does not fit a residual error term). This is the same behavior as `siarsolo` in SIAR. Here, like in the **Wolves** example (see MixSIAR manual) we want the "Residual * Process" error option. 
 
 ```{r, eval=TRUE}
 # Write the JAGS model file
@@ -516,12 +519,13 @@ process_err <- TRUE
 write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 ```
 
+Our model is written, we now want to run it.
 
 ##### **Run model**
 
-Choose one of the MCMC run options:
+There are several pre-existing options to run your MCMC model: 
 
-| run ==  | Chain Length | Burn-in | Thin | # Chains |
+| run | Chain Length | Burn-in | Thin | # Chains |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | "test" | 1,000 | 500 | 1 | 3 |
 | "very short" | 10,000 | 5,000 | 5 | 3 |
@@ -531,19 +535,20 @@ Choose one of the MCMC run options:
 | "very long" | 1,000,000 | 500,000 | 500 | 3 |
 | "extreme" | 3,000,000 | 1,500,000 | 500 | 3 |
 
-You can also set custom MCMC parameters, e.g:
+Alternatively, you can also set custom MCMC parameters, e.g:
+
 ```{r, eval=TRUE}
 run <- list(chainLength=1000, burn=500, thin=1, chains=3, calcDIC=TRUE)
 ```
 
-Good idea to use `run = "test"` first to check if 1) the data are loaded correctly and 2) the model is specified correctly:
+A good idea to use `run = "test"` at first to check if 1) all the data are loaded correctly and if 2) the model is specified correctly:
 
 ```{r, eval=FALSE}
-# not run
+# not run, youcan weight your priors in the lines below
 jags.1 <- run_model(run="test", mix, source, discr, model_filename, alpha.prior = 1, resid_err, process_err)
 
 # jags.1 <- run_model(run="normal", mix, source, discr, model_filename, alpha.prior = 1, resid_err, process_err)
-# you can weight priors in the lines below
+
 ```
 
 
@@ -557,23 +562,23 @@ output_options <- list(summary_save = TRUE,
                        sup_pairs = FALSE,
                        plot_pairs_save_pdf = FALSE,
                        plot_pairs_name = "pairs_plot",
-                       sup_xy = TRUE,
+                       sup_xy = FALSE, #
                        plot_xy_save_pdf = FALSE,
                        plot_xy_name = "xy_plot",
                        gelman = TRUE,
                        heidel = FALSE,
-                       geweke = TRUE,
+                       geweke = FALSE,
                        diag_save = TRUE,
                        diag_name = "diagnostics",
                        indiv_effect = FALSE,
                        plot_post_save_png = TRUE,
-                       plot_pairs_save_png = FALSE
+                       plot_pairs_save_png = FALSE,
                        plot_xy_save_png = FALSE)
 ```
 
 Then you can call `output_JAGS` to process diagnostics, summary statistics, and create posterior density plots:
 ```{r, eval=FALSE}
-# not run, figures form model output "normal"
+# not run, figures from model output "normal"
 output_JAGS(jags.1, mix, source, output_options)
 ```
 
@@ -591,12 +596,15 @@ For a thorough explanation of the output from `output_JAGS`, see the Wolves Exam
 
 More on MCMC at https://youtu.be/vTUwEu53uzs?feature=shared.
 
+
 ## The isotopic niches
 
-To characterize isotopic niches, we will run `SIBER` analyses. Here again, thanks to Brian Hayden for the amazing materials. The scripts are predominantly taken from an example by Andrew Jackson, available here https://cran.r-project.org/web/packages/SIBER/vignettes/Introduction-to-SIBER.html
+To characterize isotopic niches, we will run `SIBER` analyses. Here again, thanks to Brian Hayden for the amazing materials. The scripts are predominantly taken from an example by Andrew Jackson, available [here](https://cran.r-project.org/web/packages/SIBER/vignettes/Introduction-to-SIBER.html)
 
 
-Here again, the first task is to take back our original data set and to make some basic manipulations. The SIBER package isn't quite as flexible as some of the others we have worked with so far, for this analysis we need to code all data as *community*, in this case `Season`, and *group*, in this case a new grouping variable 'Category' which identifies coral by species and sources. 
+Here again, the first task is to take back our original data set and to make some basic manipulations. The SIBER package isn't quite as flexible as some of the others we have worked with so far. For SIBER analysis we need to code all data as *community* (in this case `Season`) and *group* (in this case 'Category'). In addition, d13C and d15N **MUST** be named iso1 and iso2.
+
+First an overview of the data set:
 
 ```{r, eval=TRUE}
 #Siber biplots
@@ -610,7 +618,7 @@ Siber.biplots<-ggplot(Data, aes(x = d13C, y = d15N, colour = Category)) +
 Siber.biplots
 ```
 
-For this analysis we are specifically interested in calculating and comparing the isotopic niche of the two coral species, *A. subpinnata* and *E. cavolini*. So we need to subset them out from the data set
+For this analysis we are specifically interested in calculating and comparing the isotopic niche of the two coral species, *A. subpinnata* and *E. cavolini*. So we need to subset them out from the data set:
 
 
 ```{r, eval=TRUE}
@@ -635,7 +643,7 @@ Siber.group.biplots+
   stat_ellipse(position="identity", level=0.95, linewidth=1)
 ```
 
-Next we employ some magic to start running the analysis! The `SIBER` package requires the data set in a specific format, *i.e.* a SIBER object, but thankfully it also includes a function to format our data. 
+Then some magic to start running the analysis! The `SIBER` package requires the data set in a specific format, *i.e.* a SIBER object. After renaming the variables, we can use the function `createSiberObject()` to create this object. 
 
 
 ```{r, eval=TRUE}
@@ -645,7 +653,7 @@ Siber.g.example <- createSiberObject(Siber.group)
 
 ```
 
-The next step is to generate some SIBER plots of the data, to do this we need to provide the package with some specified argument terms before generating the plot. Again, default options are provided but we weed to enter them. Try changing some of these arguments and see what effect this has on your plots!
+The next step is to generate some SIBER plots of the data, to do this we need to provide the package with some specified argument terms before generating the plot. Here, we will use default options, but we still need to enter them. Try changing some of these arguments and see what effect this has on your plots!
 
 ```{r, eval=TRUE}
 # Create lists of plotting arguments to be passed onwards to each of the three plotting functions.
@@ -669,7 +677,7 @@ plotSiberObject(Siber.g.example,
                   )
 ```
 
-Okay, so we have now visualized the isotopic niche of each population but how about getting some data.We can obtain the convex hull area(TA), Standard Ellipse Area (SEA) and Standard Ellipse Area corrected (SEAc) based on the maximum likelihood estimates of the means and covariance matrices of each group.
+Okay, so we have now visualized the isotopic niche of each population but how about getting some data. We can obtain the convex hull area (TA), Standard Ellipse Area (SEA) and Standard Ellipse Area corrected (SEAc) based on the maximum likelihood estimates of the means and covariance matrices of each group.
 
 ```{r, eval=TRUE}
 # Calculate summary statistics for each group: TA, SEA and SEAc
@@ -719,27 +727,30 @@ E_cavolini.over <- E_cavolini.overlap[3] / (E_cavolini.overlap[2] +
 E_cavolini.over
 ```
 
-These data are just a single value however, a geometric measurement of the area of each hull or ellipse. If want to know how reliable those data are we need to calculate a confidence interval. The best way to do that is by calculating the Bayesian ellipse (SEAb).
+These data are just **single value** however, e.g. geometric measurements of the area of each hull or ellipse. If want to know how reliable those data are we need to calculate a **confidence interval**. The best way to do that is by calculating the Bayesian ellipse (SEAb).
 
-To do this we run the SIBER model again, first we need to provide model paramters and priors, the default options are below
+To do this we run the SIBER model again, first we need to provide model parameters and priors, we enter the default options are below
 
 ```{r}
 
+# default model
 parms <- list()
 parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
 parms$n.burnin <- 1 * 10^3 # discard the first set of values
 parms$n.thin <- 10     # thin the posterior by this many
 parms$n.chains <- 2        # run this many chains
 
-# define the priors
+# default priors
 priors <- list()
 priors$R <- 1 * diag(2)
 priors$k <- 2
 priors$tau.mu <- 1.0E-3
 
-ellipses.posterior <- siberMVN(Siber.g.example, parms, priors) #run the model
+# run the model
+ellipses.posterior <- siberMVN(Siber.g.example, parms, priors) # MVN: Multivariate Normal distribution
 ```
-Hurrah, the model ran successfully, next let's look at the output
+
+The model ran successfully, next let's look at the output:
 
 ```{r, eval=TRUE}
 
@@ -761,7 +772,7 @@ points(1:ncol(SEA.B), Group.ML[3,], col="red", pch = "x", lwd = 2)
 
 Here we are plotting the distribution of ellipses for each population as a density plot. The gradations denote 95, 75 and 50 % credibility intervals. Now we can robustly compare between populations stating for example that we are 95% certain that *E. cavolini*  has a larger isotopic niche than *A. subpinnata* in autumn. 
 
-Visualizing the data is all well and good, show me the data!
+Visualizing the data is all well and good, show me the data (note: can skip this part)!
 
 ```{r, eval=TRUE}
 
@@ -804,11 +815,11 @@ We will strat from our previous biplot `Siber.biplots`, but instead of analysing
 
 ```{r, eval=TRUE}
 # Subset coral
-Siber.comm<-Dataset[,c("d13C", "d15N", "Category", "Season")]
+Siber.comm<-Data[,c("d13C", "d15N", "Category", "Season")]
 colnames(Siber.comm) <- c('iso1','iso2','group', 'community') 
 ```
 
-A big problem here is the presence of `NA` values. For the purpose of this demo, we will work around this problem by replacing missing values with average of the treatment (community|group). 
+A **big problem** here is the presence of `NA` values. For the purpose of this demo, we will work around this problem by replacing missing values with average of the treatment (community|group). 
 
 ```{r, eval=TRUE}
 # A bit of cooking to remove the NA values
@@ -822,7 +833,6 @@ Siber.comm.corr<-as.data.frame(Siber.comm.corr)
 Siber.c.example <- createSiberObject(Siber.comm.corr)
 Siber.c.example$sample.sizes
 ```
-
 
 You need a minimum of 3 individuals in each group to run the analysis. If this is not the case, you should considering merging groups. As with the isotopic niche calculation we can calculate food web metrics according to the geometric distance between observed data points or using the Bayesian approach which will allow us to estimate the variance on each metric. Lets start with the easy stuff. As before, you need to provide some arguments for the plots and calculations.
 
@@ -849,7 +859,7 @@ print(community.ML)
 ```
 
 
-Neat, we can already see differences between each season but how reliable are they? To find out we run the SIBER model and calculate the Bayesian community metrics
+Next, we can already see differences between each season but how reliable are they? To find out we run the SIBER model and calculate the Bayesian community metrics
 
 ```{r, eval=TRUE}
 parms <- list()

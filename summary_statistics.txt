@@ -1,0 +1,26 @@
+
+#################################################################
+# Summary Statistics
+#################################################################
+
+DIC = -43.42823
+
+                                         Mean    SD  2.5%    5%   25%   50%   75%   95% 97.5%
+Epsilon.1                               5.129 1.506 2.910 3.175 4.079 4.911 5.915 7.833 8.619
+Epsilon.2                               0.214 0.063 0.125 0.134 0.172 0.204 0.244 0.332 0.363
+p.autumn.A_subpinnata.mesoplankton      0.499 0.124 0.269 0.302 0.415 0.489 0.579 0.715 0.759
+p.autumn.A_subpinnata.microplankton     0.041 0.038 0.000 0.001 0.008 0.030 0.063 0.116 0.133
+p.autumn.A_subpinnata.pico-nanoplankton 0.440 0.112 0.203 0.243 0.365 0.447 0.517 0.615 0.647
+p.autumn.A_subpinnata.sediment          0.021 0.010 0.006 0.008 0.013 0.019 0.026 0.040 0.046
+p.autumn.E_cavolini.mesoplankton        0.261 0.125 0.064 0.082 0.167 0.247 0.341 0.489 0.534
+p.autumn.E_cavolini.microplankton       0.021 0.019 0.000 0.001 0.006 0.015 0.030 0.059 0.070
+p.autumn.E_cavolini.pico-nanoplankton   0.441 0.115 0.195 0.235 0.366 0.452 0.525 0.611 0.639
+p.autumn.E_cavolini.sediment            0.277 0.038 0.209 0.221 0.251 0.275 0.300 0.344 0.361
+p.spring.A_subpinnata.mesoplankton      0.948 0.031 0.868 0.892 0.935 0.954 0.968 0.981 0.985
+p.spring.A_subpinnata.microplankton     0.006 0.006 0.000 0.000 0.001 0.004 0.008 0.018 0.023
+p.spring.A_subpinnata.pico-nanoplankton 0.030 0.027 0.004 0.006 0.013 0.023 0.038 0.080 0.099
+p.spring.A_subpinnata.sediment          0.016 0.008 0.005 0.006 0.011 0.015 0.020 0.031 0.035
+p.spring.E_cavolini.mesoplankton        0.643 0.036 0.556 0.577 0.625 0.650 0.667 0.691 0.699
+p.spring.E_cavolini.microplankton       0.005 0.005 0.000 0.000 0.001 0.003 0.006 0.015 0.020
+p.spring.E_cavolini.pico-nanoplankton   0.041 0.029 0.007 0.009 0.020 0.033 0.053 0.094 0.114
+p.spring.E_cavolini.sediment            0.311 0.015 0.281 0.287 0.301 0.311 0.321 0.337 0.341

@@ -194,8 +194,9 @@ knitr::include_graphics("Figures/Mixing_model.png")
 
 ### consumer data
 Cons <- New.data # consumer data set
-Cons[,c("Type", "Weight", "mgN", "mgC", "C.N")]<-NULL
-write.csv(Cons, "Data/Cons.csv", row.names=T) # "/cloud/project/Cons.csv"
+Cons[,c("Type", "Weight", "mgN", "mgC", "CN", "perc_C")]<-NULL
+write.csv(Cons, "Data/Cons.csv", row.names=T) 
+# Note for Posit path "/cloud/project/Cons.csv" to ignore
 
 Sub.data<-subset(Data, Category == "mesoplankton" | Category == "microplankton" | Category == "pico-nanoplankton" | Category == "sediment" )
 Data.sum.2<-ddply(Sub.data, c("Season", "Category"), summarise,
@@ -206,7 +207,8 @@ Data.sum.2<-ddply(Sub.data, c("Season", "Category"), summarise,
 
 Sources<-Data.sum.2[,c(2,1,3,4,5,6)] # reshaping table
 Sources$n<-rep(1000,8) # treating n as unknown (see MixSiAR manual)
-write.csv(Sources, "Data/Sources.csv", row.names=F) # "/cloud/project/Sources.csv"
+write.csv(Sources, "Data/Sources.csv", row.names=F) 
+# Note for Posit path "/cloud/project/Sources.csv" to ignore
 
 Meand13C<-c(1.0, 1.0, 1.0,1.0)
 SDd13C<-c(0.4, 0.4, 0.4, 0.4)
@@ -214,7 +216,8 @@ Meand15N<-c(2.5, 2.5, 2.5, 2.5)
 SDd15N<-c(1, 1, 1, 1)
 Tef<- data.frame(Meand13C, SDd13C, Meand15N, SDd15N)
 rownames(Tef)<-c("mesoplankton" , "microplankton" , "pico-nanoplankton" , "sediment" )
-write.csv(Tef, "Data/Tef.csv", row.names=T) # "/cloud/project/Tef.csv"
+write.csv(Tef, "Data/Tef.csv", row.names=T)
+# Note for Posit path "/cloud/project/Tef.csv" to ignore
 
 
 # Consumers
@@ -224,7 +227,7 @@ mix <- load_mix_data(filename = "Data/Cons.csv", #"/cloud/project/Cons.csv"
                      factors   = c("Season", "Category"),
                      fac_random = c(FALSE,FALSE), # very important here  T / F
                      fac_nested = c(TRUE,FALSE), # very important here F / T
-                     cont_effects = NULL) # if you have gradient for example
+                     cont_effects = NULL) # if you have gradient
 
 # Sources
 
@@ -234,9 +237,9 @@ source <- load_source_data(filename = "Data/Sources.csv", #"/cloud/project/Sourc
                            data_type = "means", 
                            mix)
 
-# TEF
+# TEFs
 
-discr <- load_discr_data(filename = "Data/Tef.csv", mix) # "/cloud/project/Tef.csv"
+discr <- load_discr_data(filename = "Data/Tef.csv", mix) 
 
 # Make an isospace plot
 plot_data(filename="Plots/isospace_plot", plot_save_pdf=FALSE, plot_save_png=TRUE, mix, source, discr)
@@ -255,11 +258,11 @@ write_JAGS_model(model_filename, resid_err, process_err, mix, source)
 
 run <- list(chainLength=1000, burn=500, thin=1, chains=3, calcDIC=TRUE)
 
-## # not run
+## # not run, youcan weight your priors in the lines below
 ## jags.1 <- run_model(run="test", mix, source, discr, model_filename, alpha.prior = 1, resid_err, process_err)
 ## 
 ## # jags.1 <- run_model(run="normal", mix, source, discr, model_filename, alpha.prior = 1, resid_err, process_err)
-## # you can weight priors in the lines below
+## 
 
 ## #not run
 ## output_options <- list(summary_save = TRUE,
@@ -270,20 +273,20 @@ run <- list(chainLength=1000, burn=500, thin=1, chains=3, calcDIC=TRUE)
 ##                        sup_pairs = FALSE,
 ##                        plot_pairs_save_pdf = FALSE,
 ##                        plot_pairs_name = "pairs_plot",
-##                        sup_xy = TRUE,
+##                        sup_xy = FALSE, #
 ##                        plot_xy_save_pdf = FALSE,
 ##                        plot_xy_name = "xy_plot",
 ##                        gelman = TRUE,
 ##                        heidel = FALSE,
-##                        geweke = TRUE,
+##                        geweke = FALSE,
 ##                        diag_save = TRUE,
 ##                        diag_name = "diagnostics",
 ##                        indiv_effect = FALSE,
 ##                        plot_post_save_png = TRUE,
-##                        plot_pairs_save_png = FALSE
+##                        plot_pairs_save_png = FALSE,
 ##                        plot_xy_save_png = FALSE)
 
-## # not run, figures form model output "normal"
+## # not run, figures from model output "normal"
 ## output_JAGS(jags.1, mix, source, output_options)
 
 readLines("diagnostics.txt")
@@ -390,19 +393,21 @@ E_cavolini.over <- E_cavolini.overlap[3] / (E_cavolini.overlap[2] +
 E_cavolini.over
 
 
+# default model
 parms <- list()
 parms$n.iter <- 2 * 10^4   # number of iterations to run the model for
 parms$n.burnin <- 1 * 10^3 # discard the first set of values
 parms$n.thin <- 10     # thin the posterior by this many
 parms$n.chains <- 2        # run this many chains
 
-# define the priors
+# default priors
 priors <- list()
 priors$R <- 1 * diag(2)
 priors$k <- 2
 priors$tau.mu <- 1.0E-3
 
-ellipses.posterior <- siberMVN(Siber.g.example, parms, priors) #run the model
+# run the model
+ellipses.posterior <- siberMVN(Siber.g.example, parms, priors) # MVN: Multivariate Normal distribution
 
 
 SEA.B <- siberEllipses(ellipses.posterior)
@@ -440,7 +445,7 @@ SEA.B.credibles <- lapply(
 SEA.B.credibles
 
 # Subset coral
-Siber.comm<-Dataset[,c("d13C", "d15N", "Category", "Season")]
+Siber.comm<-Data[,c("d13C", "d15N", "Category", "Season")]
 colnames(Siber.comm) <- c('iso1','iso2','group', 'community') 
 
 # A bit of cooking to remove the NA values
