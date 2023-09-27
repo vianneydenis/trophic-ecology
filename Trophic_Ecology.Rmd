@@ -48,6 +48,10 @@ library(SIBER) # trophic niche
 library(MixSIAR) # mixing model 
 ```
 
+### Data availability
+
+All data and code to replicate the analysis here are provided [here](https://github.com/vianneydenis/trophic-ecology.git). You can use this repository and knit the .Rmd file. Edits, suggestions, and comments are welcome.
+
 ### Credit
 
 To **Brian Hayden** (https://sites.google.com/view/brianhayden/home?authuser=0)
