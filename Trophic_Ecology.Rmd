@@ -194,7 +194,7 @@ Lipid.plot<-ggplot(New.data, aes(x=CN, y=d13C)) +
 Lipid.plot 
 ```
 
-Alternatively we can identify whether any individuals / populations have C:N values above a threshold. A CN ratio of 7 is usual for corals
+Alternatively we can identify whether any individuals / populations have C:N values above a threshold. A CN ratio of 7 is common for corals ([Fujii et al. 2020](https://www.mdpi.com/2076-2607/8/8/1221); [Hoegh-Guldberg et al. 2004](https://www.int-res.com/abstracts/meps/v280/p105-114/); [Hsu et al. (2020)](https://www.frontiersin.org/articles/10.3389/fmars.2020.606601/full?ref=https://githubhelp.com); [Sturaro et al. (2019)](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/1365-2435.13924))
 
 ```{r, eval=TRUE}
 # Lipid effect threshold
@@ -209,7 +209,9 @@ Lipid.boxplot<-ggplot(subset(Data, Type == "coral"), aes(x=Category, group = Cat
 Lipid.boxplot  
 ```
 
-Lipid removal may have been beneficial, but in corals C:N is generally high independently of lipid removal. This is also taxon specific, so some preliminary test are usually advised. Know your beast! There is a lot of literature on the topic. 
+Lipid removal may have been beneficial, but in corals C:N is generally high independently of lipid removal. This is also taxon specific, so some preliminary test are usually advised. Know your beast ! There is a lot of literature on the topic. Among others, check [Sturaro et al. (2019)](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/full/10.1002/rcm.8663) and its supplementary information for a details methodology.
+
+
 
 We went through these comparisons individually here, but you can use pairs plots to summarize much of this information. As ever, there is a ‘Hadleyverse' option, `ggpairs`, in the GGally package. These are coarse plots but an excellent way to take a first look at your data.
 
@@ -248,7 +250,7 @@ Data.sum<-ddply(Data, c("Season", "Category"), summarise,
                 d13Cse=sd(d13C, na.rm=T)/sqrt(length(Data$d13C[!is.na(Data$d13C)])), #standard error
                 d15Nmn=mean(d15N, na.rm=T),
                 d15Nsd=sd(d15N, na.rm=T),
-                d13Cse=sd(d15N, na.rm=T)/sqrt(length(Data$d15N[!is.na(Data$d15N)])))
+                d15Nse=sd(d15N, na.rm=T)/sqrt(length(Data$d15N[!is.na(Data$d15N)])))
 
 Ylims <- aes(ymax = d15Nmn + d15Nsd, ymin=d15Nmn - d15Nsd)
 Xlims <- aes(xmax = d13Cmn + d13Csd, xmin=d13Cmn - d13Csd)
@@ -267,7 +269,7 @@ Sum.biplot
 ggsave("Plots/Sum_biplot.pdf")
 ```
 
-The initial question in study was whether *A. subpinnata* and *E. cavolini* used different resources (i.e. had different isotope ratios) in the two seasons. Do they? Lets start with a biplot to visualize the difference between the two coral species
+The initial question in study was whether *A. subpinnata* and *E. cavolini* used different resources (i.e. had different isotope ratios) in the two seasons. Do they? Lets start with a biplot to visualize the difference between the two coral species.
 
 ```{r, eval=TRUE}
 # Coral biplot

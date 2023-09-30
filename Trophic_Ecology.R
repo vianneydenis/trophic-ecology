@@ -119,7 +119,7 @@ Data.sum<-ddply(Data, c("Season", "Category"), summarise,
                 d13Cse=sd(d13C, na.rm=T)/sqrt(length(Data$d13C[!is.na(Data$d13C)])), #standard error
                 d15Nmn=mean(d15N, na.rm=T),
                 d15Nsd=sd(d15N, na.rm=T),
-                d13Cse=sd(d15N, na.rm=T)/sqrt(length(Data$d15N[!is.na(Data$d15N)])))
+                d15Nse=sd(d15N, na.rm=T)/sqrt(length(Data$d15N[!is.na(Data$d15N)])))
 
 Ylims <- aes(ymax = d15Nmn + d15Nsd, ymin=d15Nmn - d15Nsd)
 Xlims <- aes(xmax = d13Cmn + d13Csd, xmin=d13Cmn - d13Csd)
